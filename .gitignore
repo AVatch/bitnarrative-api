@@ -1,0 +1,7 @@
+*.DS_Store
+*.sqlite3
+*.pyc
+
+env/
+migrations/
+bower_components/
