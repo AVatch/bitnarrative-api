@@ -103,7 +103,7 @@ STATIC_URL = '/static/'
 AUTH_USER_MODEL = 'accounts.Account'
 
 REST_FRAMEWORK = {
-    'PAGINATE_BY': 20,
+    'PAGINATE_BY': 50,
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.TokenAuthentication',
