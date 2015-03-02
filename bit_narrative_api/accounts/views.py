@@ -32,6 +32,14 @@ class AccountDetail(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = (permissions.IsAuthenticated,)
 
 
+class AccountBits(generics.ListAPIView):
+    queryset = Account.objects.all()
+    serializer_class = AccountSerializer
+    authentication_classes = (authentication.SessionAuthentication,
+                              authentication.TokenAuthentication)
+    permission_classes = (permissions.IsAuthenticated,)
+
+
 class MeDetail(APIView):
     authentication_classes = (authentication.SessionAuthentication,
                               authentication.TokenAuthentication)

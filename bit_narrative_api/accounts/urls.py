@@ -12,9 +12,13 @@ urlpatterns = format_suffix_patterns([
         views.AccountList.as_view(),
         name='account-list'),
 
-    url(r'^api/v1/accounts/(?P<pk>[0-9]+)/$',
+    url(r'^api/v1/account/(?P<pk>[0-9]+)/$',
         views.AccountDetail.as_view(),
         name='account-detail'),
+
+    url(r'^api/v1/account/(?P<pk>[0-9]+)/bits/$',
+        views.AccountBits.as_view(),
+        name='account-bits'),
 
     url(r'^api/v1/me/$',
         views.MeDetail.as_view(),
@@ -25,7 +29,6 @@ urlpatterns = format_suffix_patterns([
 urlpatterns += [
     url(r'^api/v1/api-token-auth/', rest_views.obtain_auth_token)
 ]
-
 # Login and logout views for the browsable API
 urlpatterns += [
     url(r'^api/v1/api-auth/', include('rest_framework.urls',
