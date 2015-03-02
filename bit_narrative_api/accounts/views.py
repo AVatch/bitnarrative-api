@@ -1,3 +1,5 @@
+from django.shortcuts import get_object_or_404
+
 from rest_framework import generics, status
 from rest_framework import authentication
 from rest_framework import permissions
@@ -6,9 +8,16 @@ from rest_framework.response import Response
 
 from accounts.models import Account
 from accounts.serializers import AccountSerializer
+from bits.models import Bit
+from bits.serializers import BitSerializer
 
 
 class AccountList(generics.ListCreateAPIView):
+    """
+    URL: /api/v1/accounts/
+    Methods: GET, POST
+    Returns: List of accounts
+    """
     queryset = Account.objects.all()
     serializer_class = AccountSerializer
 
@@ -25,6 +34,11 @@ class AccountList(generics.ListCreateAPIView):
 
 
 class AccountDetail(generics.RetrieveUpdateDestroyAPIView):
+    """
+    URL: /api/v1/account/<pk>/
+    Methods: GET, PUT, DELETE
+    Returns: Handle an individual account object
+    """
     queryset = Account.objects.all()
     serializer_class = AccountSerializer
     authentication_classes = (authentication.SessionAuthentication,
@@ -33,14 +47,27 @@ class AccountDetail(generics.RetrieveUpdateDestroyAPIView):
 
 
 class AccountBits(generics.ListAPIView):
-    queryset = Account.objects.all()
-    serializer_class = AccountSerializer
+    """
+    URL: /api/v1/account/<pk>/bits/
+    Methods: GET
+    Returns: List of bits associated with the account
+    """
+    serializer_class = BitSerializer
     authentication_classes = (authentication.SessionAuthentication,
                               authentication.TokenAuthentication)
     permission_classes = (permissions.IsAuthenticated,)
 
+    def get_queryset(self):
+        user = get_object_or_404(Account, pk=self.kwargs['pk'])
+        return Bit.objects.filter(accounts=user)
+
 
 class MeDetail(APIView):
+    """
+    URL: /api/v1/me/
+    Methods: GET
+    Returns: Account object of the authenticated user making the request.
+    """
     authentication_classes = (authentication.SessionAuthentication,
                               authentication.TokenAuthentication)
     permission_classes = (permissions.IsAuthenticated,)

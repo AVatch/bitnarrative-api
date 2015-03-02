@@ -15,15 +15,11 @@ urlpatterns = format_suffix_patterns([
         views.ContentDetail.as_view(),
         name='content-detail'),
 
-    url(r'^api/v1/content/(?P<pk>[0-9]+)/accounts/$',
-        views.ContentDetail.as_view(),
-        name='content-accounts'),
-
     url(r'^api/v1/content/(?P<pk>[0-9]+)/bits/$',
-        views.ContentDetail.as_view(),
+        views.ContentBits.as_view(),
         name='content-bits'),
 
     url(r'^api/v1/content/(?P<pk>[0-9]+)/topbits/$',
-        views.ContentDetail.as_view(),
+        views.ContentTopBits.as_view(),
         name='content-topbits'),
 ])

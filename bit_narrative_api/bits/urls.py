@@ -16,6 +16,6 @@ urlpatterns = format_suffix_patterns([
         name='bit-detail'),
 
     url(r'^api/v1/bit/(?P<pk>[0-9]+)/accounts/$',
-        views.BitDetail.as_view(),
+        views.BitAccounts.as_view(),
         name='bit-accounts'),
 ])
