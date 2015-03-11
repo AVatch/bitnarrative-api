@@ -18,7 +18,11 @@
 Currently authentication is token based. That means that upon successful authentication, a response will be returned containing 
 a token.
 
+
 #####Request: POST
+```http
+/api/v1/api-token-auth/
+```
 ```json
 {
   "username":"",
