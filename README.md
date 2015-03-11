@@ -56,7 +56,7 @@ a token.
 ```
 
 #### Accounts
-#####Request: GET
+#####Request: GET @auth-required
 ```http
 /api/v1/accounts/
 ```
@@ -87,6 +87,19 @@ following pages.
 #####Request: POST
 ```http
 /api/v1/accounts/create/
+```
+Required fields: ```username```, ```password```, ```confirm_password```
+```json
+{
+  "username": "",
+  "email": "",
+  "first_name": "",
+  "last_name": "",
+  "profile_picture_url": "",
+  "is_manager": "",
+  "password": "",
+  "confirm_password": ""
+}
 ```
 
 #####Request: GET, POST, PUT, DELETE
