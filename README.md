@@ -56,6 +56,26 @@ a token.
 ```
 
 #### Accounts
+```http
+/api/v1/accounts/
+```
+
+```http
+/api/v1/accounts/create/
+```
+
+```http
+/api/v1/account/<pk>/
+```
+
+```http
+/api/v1/account/<pk>/bits/
+```
+
+```http
+/api/v1/me/
+```
+
 
 #### Content
 
