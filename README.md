@@ -37,6 +37,12 @@ a token.
 }
 ```
 
+All subsequent requests need to contain the following header:
+
+```
+Authorization: Token <token>
+```
+
 ### Endpoints
 ```http
 /api/v1/accounts/
@@ -126,7 +132,7 @@ Returns an account object
 ```http
 /api/v1/account/<pk>/bits/
 ```
-Returns a paginated list of bits the user has interacted with, sorted by most recent
+Returns a paginated list of bits the authenticated user has interacted with, sorted by most recent
 ```json
 {
     "count": 12, 
@@ -151,11 +157,11 @@ Returns a paginated list of bits the user has interacted with, sorted by most re
 }
 ```
 
-#####Request: GET
+#####Request: GET @auth-required
 ```http
 /api/v1/me/
 ```
-
+Returns the currently authenticated user account's object
 
 #### Content
 
