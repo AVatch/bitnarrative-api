@@ -60,6 +60,27 @@ a token.
 ```http
 /api/v1/accounts/
 ```
+#####Response
+```json
+{
+    "count": 4, 
+    "next": null, 
+    "previous": null, 
+    "results": [
+        {
+            "id": 1, 
+            "username": "avatchinsky", 
+            "email": "", 
+            "first_name": "", 
+            "last_name": "", 
+            "profile_picture_url": null, 
+            "is_manager": false, 
+            "created_at": "2015-02-25T17:57:07.446229Z", 
+            "updated_at": "2015-02-25T17:57:07.450180Z"
+        } 
+    ]
+}
+```
 
 #####Request: POST
 ```http
