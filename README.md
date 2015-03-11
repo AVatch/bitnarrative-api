@@ -21,15 +21,15 @@ a token.
 ####POST
 ```json
 {
-  'username':'',
-  'password':''
+  "username":"",
+  "password":""
 }
 ```
 
 ####Response
 ```json
 {
-  'token': ''
+  "token":""
 }
 ```
 
