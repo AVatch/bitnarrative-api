@@ -61,6 +61,8 @@ a token.
 /api/v1/accounts/
 ```
 #####Response
+Paginated result of all accounts. ```next``` and ```previous``` contain ```urls``` to the 
+following pages.
 ```json
 {
     "count": 4, 
