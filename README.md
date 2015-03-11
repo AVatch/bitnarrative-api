@@ -15,6 +15,23 @@
 ```
 
 ### Authentication Flow
+Currently authentication is token based. That means that upon successful authentication, a response will be returned containing 
+a token.
+
+####POST
+```json
+{
+  'username':'',
+  'password':''
+}
+```
+
+####Response
+```json
+{
+  'token': ''
+}
+```
 
 ### Endpoints
 

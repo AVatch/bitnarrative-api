@@ -1,7 +1,6 @@
 from rest_framework import serializers
 
 from accounts.models import Account
-from bits.serializers import BitSerializer
 
 
 class AccountSerializer(serializers.HyperlinkedModelSerializer):
@@ -11,13 +10,6 @@ class AccountSerializer(serializers.HyperlinkedModelSerializer):
     confirm_password = serializers.CharField(write_only=True,
                                              allow_blank=True,
                                              required=False)
-
-    # only hyperlink
-    # bits = serializers.HyperlinkedRelatedField(many=True,
-    #                                            view_name='bit-detail',
-    #                                            read_only=True)
-    # Example of using a serializer
-    # bits = BitSerializer(many=True, read_only=True)
 
     class Meta:
         model = Account
