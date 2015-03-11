@@ -48,6 +48,10 @@ a token.
 /api/v1/content/<pk>)/
 /api/v1/content/<pk>/bits/
 /api/v1/content/<pk>/topbits/
+
+/api/v1/bits/
+/api/v1/bit/<pk>/
+/api/v1/bit/<pk>/accounts/
 ```
 
 #### Accounts
