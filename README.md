@@ -56,22 +56,27 @@ a token.
 ```
 
 #### Accounts
+#####Request: GET
 ```http
 /api/v1/accounts/
 ```
 
+#####Request: POST
 ```http
 /api/v1/accounts/create/
 ```
 
+#####Request: GET, POST, PUT, DELETE
 ```http
 /api/v1/account/<pk>/
 ```
 
+#####Request: GET
 ```http
 /api/v1/account/<pk>/bits/
 ```
 
+#####Request: GET
 ```http
 /api/v1/me/
 ```
