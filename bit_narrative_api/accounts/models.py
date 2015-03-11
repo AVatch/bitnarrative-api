@@ -17,6 +17,9 @@ class AccountManager(BaseUserManager):
           username=kwargs.get('username'),
         )
 
+        if password is None:
+            raise ValueError('User must have a valid password')
+
         account.set_password(password)
         account.save()
 

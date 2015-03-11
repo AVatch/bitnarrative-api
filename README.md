@@ -102,10 +102,25 @@ Required fields: ```username```, ```password```, ```confirm_password```
 }
 ```
 
-#####Request: GET, POST, PUT, DELETE
+#####Request: GET, POST, PUT, DELETE @auth-required
 ```http
 /api/v1/account/<pk>/
 ```
+Returns an account object
+```json
+{
+  "id": 1, 
+  "username": "avatchinsky", 
+  "email": "", 
+  "first_name": "", 
+  "last_name": "", 
+  "profile_picture_url": null, 
+  "is_manager": false, 
+  "created_at": "2015-02-25T17:57:07.446229Z", 
+  "updated_at": "2015-02-25T17:57:07.450180Z"
+}
+```
+
 
 #####Request: GET
 ```http
