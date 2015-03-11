@@ -43,9 +43,12 @@ a token.
 /api/v1/account/<pk>/
 /api/v1/account/<pk>/bits/
 /api/v1/me/
-```
 
-#### Authentication
+/api/v1/content/
+/api/v1/content/<pk>)/
+/api/v1/content/<pk>/bits/
+/api/v1/content/<pk>/topbits/
+```
 
 #### Accounts
 
