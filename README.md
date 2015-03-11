@@ -122,9 +122,33 @@ Returns an account object
 ```
 
 
-#####Request: GET
+#####Request: GET @auth-required
 ```http
 /api/v1/account/<pk>/bits/
+```
+Returns a paginated list of bits the user has interacted with, sorted by most recent
+```json
+{
+    "count": 12, 
+    "next": "http://127.0.0.1:8000/api/v1/account/1/bits/?page=2", 
+    "previous": null, 
+    "results": [
+        {
+            "id": 13, 
+            "bit": "more", 
+            "content_index": 19, 
+            "accounts": [
+                "http://127.0.0.1:8000/api/v1/account/1/"
+            ], 
+            "content": "http://127.0.0.1:8000/api/v1/content/1/", 
+            "view_count": 1, 
+            "share_count": 0, 
+            "up_count": 0, 
+            "down_count": 0, 
+            "created_at": "2015-02-25T18:29:46.260509Z"
+        }
+    ]
+}
 ```
 
 #####Request: GET
