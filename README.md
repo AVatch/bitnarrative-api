@@ -38,6 +38,12 @@ a token.
 ```
 
 ### Endpoints
+```http
+/api/v1/accounts/
+/api/v1/account/<pk>/
+/api/v1/account/<pk>/bits/
+/api/v1/me/
+```
 
 #### Authentication
 
