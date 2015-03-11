@@ -12,11 +12,24 @@ from bits.models import Bit
 from bits.serializers import BitSerializer
 
 
-class AccountList(generics.ListCreateAPIView):
+class AccountList(generics.ListAPIView):
     """
     URL: /api/v1/accounts/
-    Methods: GET, POST
+    Methods: GET
     Returns: List of accounts
+    """
+    queryset = Account.objects.all()
+    serializer_class = AccountSerializer
+    authentication_classes = (authentication.SessionAuthentication,
+                              authentication.TokenAuthentication)
+    permission_classes = (permissions.IsAuthenticated,)
+
+
+class AccountCreate(generics.CreateAPIView):
+    """
+    URL: /api/v1/accounts/create/
+    Methods: POST
+    Returns: Creates an account
     """
     queryset = Account.objects.all()
     serializer_class = AccountSerializer
