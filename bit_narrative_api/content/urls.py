@@ -11,6 +11,10 @@ urlpatterns = format_suffix_patterns([
         views.ContentList.as_view(),
         name='content-list'),
 
+    url(r'^api/v1/content/parse/$',
+        views.ContentParse.as_view(),
+        name='content-parse'),
+
     url(r'^api/v1/content/(?P<pk>[0-9]+)/$',
         views.ContentDetail.as_view(),
         name='content-detail'),

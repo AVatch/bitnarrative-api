@@ -17,3 +17,7 @@ class ContentSerializer(serializers.HyperlinkedModelSerializer):
                   'lead_image_url', 'date_published',
                   'word_count', 'view_count', 'share_count',
                   'created_at', )
+
+
+class ContentParserSerializer(serializers.Serializer):
+    url = serializers.URLField()

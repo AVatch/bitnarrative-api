@@ -17,5 +17,6 @@ def api_root(request, format=None):
         # 'me-bits': reverse('me-bit-detail', request=request, format=format),
         'accounts': reverse('account-list', request=request, format=format),
         'content': reverse('content-list', request=request, format=format),
+        'content parse': reverse('content-parse', request=request, format=format),
         'bit': reverse('bit-list', request=request, format=format),
     })
