@@ -1,5 +1,6 @@
 import urllib2
 import json
+import re
 
 
 readability_api_token = '04aa48d7c5552b8a45c3f87db1d61274f1242241'
@@ -36,3 +37,17 @@ def parse_content(url, version='v1'):
         print "[EXCEPTION]:\tParser Error"
         res = None
     return res
+
+
+def strip_tags(s):
+    """
+    removes all < * > </ * > tags
+    """
+    return re.sub("<.*?>", " ", s)
+
+
+def parse_bits(s):
+    """
+    breaks a text into bits
+    """
+    return re.split("\. ", s)

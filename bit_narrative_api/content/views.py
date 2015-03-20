@@ -9,7 +9,7 @@ from rest_framework.response import Response
 
 from content.models import Content
 from content.serializers import ContentSerializer, ContentParserSerializer
-from content.parsers import parse_content
+from content.parsers import parse_content, strip_tags, parse_bits
 from bits.models import Bit
 from bits.serializers import BitSerializer
 
@@ -106,7 +106,7 @@ class ContentParse(APIView):
             # check to see if content exists, otherwise create it
             try:
                 content = Content.objects.get(url=serializer.data['url'])
-            except Exception, e:
+            except Exception:
                 # object does not exist so create it
                 # parse the content
                 parsed = parse_content(self.request.data[u'url'])
@@ -120,11 +120,40 @@ class ContentParse(APIView):
                                                  view_count=1,
                                                  share_count=0, )
                 # break it down to bits
+                content.content = strip_tags(content.content)
+                bits_parsed = parse_bits(content.content)
+                bits_response = []
+                for i, bit in enumerate(bits_parsed):
+                    b = Bit.objects.create(bit=bit,
+                                           content_index=i,
+                                           content=content)
+                    b_r = {
+                        "id": b.pk,
+                        "bit": b.bit,
+                        "content_index": b.content_index,
+                        "view_count": b.view_count,
+                        "share_count": b.share_count,
+                        "up_count": b.up_count,
+                        "down_count": b.down_count,
+                        "created_at": b.created_at,
+                        "updated_at": b.updated_at,
+                    }
+                    bits_response.append(b_r)
 
-            print content.title
-
-            # return
-            return Response(serializer.data)
+            response = {
+                "content": {"id": content.pk,
+                            "domain": content.domain,
+                            "url": content.url,
+                            "title": content.title,
+                            "excerpt": content.excerpt,
+                            "lead_image_url": content.lead_image_url,
+                            "word_count": content.word_count,
+                            "view_count": content.view_count,
+                            "share_count": content.share_count
+                            },
+                "bits": bits_response
+            }
+            return Response(response, status=status.HTTP_200_OK)
         else:
             return Response(serializer.errors,
                             status=status.HTTP_400_BAD_REQUEST)
