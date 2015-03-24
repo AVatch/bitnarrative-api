@@ -11,7 +11,7 @@ class ContentSerializer(serializers.HyperlinkedModelSerializer):
                   'title', 'excerpt', 'content',
                   'lead_image_url', 'date_published',
                   'word_count', 'view_count', 'share_count',
-                  'created_at', )
+                  'created_at', 'community')
 
 
 class ContentParserSerializer(serializers.Serializer):

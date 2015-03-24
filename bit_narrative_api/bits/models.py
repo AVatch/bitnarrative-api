@@ -2,6 +2,7 @@ from django.db import models
 
 from accounts.models import Account
 from content.models import Content
+from community.models import Community
 
 
 class Bit(models.Model):
@@ -10,6 +11,7 @@ class Bit(models.Model):
 
     content = models.ForeignKey(Content, related_name='bits')
     accounts = models.ManyToManyField(Account, related_name='bits')
+    community = models.ManyToManyField(Community, related_name='bits')
 
     view_count = models.IntegerField(default=0)
     share_count = models.IntegerField(default=0)

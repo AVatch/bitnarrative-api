@@ -19,4 +19,5 @@ def api_root(request, format=None):
         'content': reverse('content-list', request=request, format=format),
         'content parse': reverse('content-parse', request=request, format=format),
         'bit': reverse('bit-list', request=request, format=format),
+        'community': reverse('community-list', request=request, format=format),
     })

@@ -1,4 +1,5 @@
 from django.db import models
+from community.models import Community
 
 
 class Content(models.Model):
@@ -8,6 +9,8 @@ class Content(models.Model):
     title = models.CharField(max_length=240, blank=True)
     excerpt = models.TextField(blank=True)
     content = models.TextField(blank=True)
+
+    community = models.ManyToManyField(Community, related_name='content')
 
     lead_image_url = models.URLField(blank=True, null=True)
 
