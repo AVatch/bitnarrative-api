@@ -22,4 +22,12 @@ urlpatterns = format_suffix_patterns([
     url(r'^api/v1/community/(?P<pk>[0-9]+)/topbits/$',
         views.CommunityTopBits.as_view(),
         name='community-topbits'),
+
+    url(r'^api/v1/community/(?P<pk>[0-9]+)/join/$',
+        views.CommunityJoin.as_view(),
+        name='community-join'),
+
+    url(r'^api/v1/community/(?P<pk>[0-9]+)/accounts/$',
+        views.CommunityAccounts.as_view(),
+        name='community-accounts'),
 ])

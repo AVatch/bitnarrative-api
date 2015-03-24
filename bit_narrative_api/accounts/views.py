@@ -10,6 +10,8 @@ from accounts.models import Account
 from accounts.serializers import AccountSerializer
 from bits.models import Bit
 from bits.serializers import BitSerializer
+from community.models import Community
+from community.serializers import CommunitySerializer
 
 
 class AccountList(generics.ListAPIView):
@@ -73,6 +75,22 @@ class AccountBits(generics.ListAPIView):
     def get_queryset(self):
         user = get_object_or_404(Account, pk=self.kwargs['pk'])
         return Bit.objects.filter(accounts=user)
+
+
+class AccountCommunities(generics.ListAPIView):
+    """
+    URL: /api/v1/account/<pk>/communities/
+    Methods: GET
+    Returns: List of communities associated with the account
+    """
+    serializer_class = CommunitySerializer
+    authentication_classes = (authentication.SessionAuthentication,
+                              authentication.TokenAuthentication)
+    permission_classes = (permissions.IsAuthenticated,)
+
+    def get_queryset(self):
+        user = get_object_or_404(Account, pk=self.kwargs['pk'])
+        return Community.objects.filter(accounts=user)
 
 
 class MeDetail(APIView):

@@ -1,9 +1,11 @@
 # Create your views here.
 from django.shortcuts import get_object_or_404
 
-from rest_framework import generics
+from rest_framework import generics, status
 from rest_framework import authentication
 from rest_framework import permissions
+from rest_framework.views import APIView
+from rest_framework.response import Response
 
 from community.models import Community
 from community.serializers import CommunitySerializer
@@ -11,6 +13,8 @@ from bits.models import Bit
 from bits.serializers import BitSerializer
 from content.serializers import ContentSerializer
 from content.models import Content
+from accounts.models import Account
+from accounts.serializers import AccountSerializer
 
 
 class CommunityList(generics.ListCreateAPIView):
@@ -73,7 +77,7 @@ class CommunityBits(generics.ListAPIView):
 
 class CommunityTopBits(generics.ListAPIView):
     """
-    URL: /api/v1/account/<pk>/topbits/
+    URL: /api/v1/community/<pk>/topbits/
     Methods: GET
     Returns: Top three bits in the community
     """
@@ -85,3 +89,35 @@ class CommunityTopBits(generics.ListAPIView):
     def get_queryset(self):
         community = get_object_or_404(Community, pk=self.kwargs['pk'])
         return Bit.objects.filter(community=community).order_by('-view_count')[:3]
+
+
+class CommunityJoin(APIView):
+    """
+    """
+    authentication_classes = (authentication.SessionAuthentication,
+                              authentication.TokenAuthentication)
+    permission_classes = (permissions.IsAuthenticated, )
+
+    def get(self, request, pk, format=None):
+        user = request.user
+        community = Community.objects.get(pk=pk)
+        community.accounts.add(user)
+        response = {"hi": "hi"}
+
+        return Response(response, status=status.HTTP_200_OK)
+
+
+class CommunityAccounts(generics.ListAPIView):
+    """
+    URL: /api/v1/community/<pk>/accounts/
+    Methods: GET
+    Returns: Accounts belonging in a certain community
+    """
+    serializer_class = AccountSerializer
+    authentication_classes = (authentication.SessionAuthentication,
+                              authentication.TokenAuthentication)
+    permission_classes = (permissions.IsAuthenticated,)
+
+    def get_queryset(self):
+        community = get_object_or_404(Community, pk=self.kwargs['pk'])
+        return Account.objects.filter(community=community)

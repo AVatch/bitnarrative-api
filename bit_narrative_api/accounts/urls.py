@@ -24,6 +24,10 @@ urlpatterns = format_suffix_patterns([
         views.AccountBits.as_view(),
         name='account-bits'),
 
+    url(r'^api/v1/account/(?P<pk>[0-9]+)/communities/$',
+        views.AccountCommunities.as_view(),
+        name='account-communities'),
+
     url(r'^api/v1/me/$',
         views.MeDetail.as_view(),
         name='me-detail'),
