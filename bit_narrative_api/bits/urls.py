@@ -15,6 +15,10 @@ urlpatterns = format_suffix_patterns([
         views.BitDetail.as_view(),
         name='bit-detail'),
 
+    url(r'^api/v1/bit/(?P<pk>[0-9]+)/rate/(?P<rating_type>[a-z]+)/$',
+        views.BitRating.as_view(),
+        name='bit-rating'),
+
     url(r'^api/v1/bit/(?P<pk>[0-9]+)/accounts/$',
         views.BitAccounts.as_view(),
         name='bit-accounts'),

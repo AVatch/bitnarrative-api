@@ -36,7 +36,7 @@ class AccountCreate(generics.CreateAPIView):
     queryset = Account.objects.all()
     serializer_class = AccountSerializer
 
-    def create(self, request):
+    def create(self, request, format=None):
         serializer = self.serializer_class(data=request.data)
         if serializer.is_valid():
             Account.objects.create_user(**serializer.validated_data)
