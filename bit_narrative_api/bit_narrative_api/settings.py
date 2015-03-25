@@ -50,6 +50,7 @@ APPS = (
     'content',
     'comments',
     'community',
+    'topics',
 )
 
 INSTALLED_APPS = CORE_APPS + THIRD_PARTY_APPS + APPS

@@ -14,10 +14,10 @@ from rest_framework.permissions import IsAuthenticated
 def api_root(request, format=None):
     return Response({
         'me': reverse('me-detail', request=request, format=format),
-        # 'me-bits': reverse('me-bit-detail', request=request, format=format),
         'accounts': reverse('account-list', request=request, format=format),
         'content': reverse('content-list', request=request, format=format),
         'content parse': reverse('content-parse', request=request, format=format),
-        'bit': reverse('bit-list', request=request, format=format),
-        'community': reverse('community-list', request=request, format=format),
+        'bits': reverse('bit-list', request=request, format=format),
+        'communities': reverse('community-list', request=request, format=format),
+        'topics': reverse('topic-list', request=request, format=format),
     })

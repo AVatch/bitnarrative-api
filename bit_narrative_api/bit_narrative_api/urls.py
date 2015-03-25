@@ -13,6 +13,7 @@ urlpatterns = patterns('',
     url(r'^', include('content.urls')),
     url(r'^', include('bits.urls')),
     url(r'^', include('community.urls')),
+    url(r'^', include('topics.urls')),
 )
 
 urlpatterns += staticfiles_urlpatterns()
