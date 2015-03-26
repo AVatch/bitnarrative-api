@@ -41,7 +41,8 @@ class Account(AbstractBaseUser):
     first_name = models.CharField(max_length=60, blank=True)
     last_name = models.CharField(max_length=60, blank=True)
 
-    profile_picture_url = models.URLField(blank=True, null=True)
+    profile_picture_url = models.URLField(default="http://placehold.it/150x150",
+                                          blank=True, null=True)
 
     is_admin = models.BooleanField(default=False)
     is_manager = models.BooleanField(default=False)
