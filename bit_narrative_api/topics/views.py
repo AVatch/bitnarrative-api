@@ -6,8 +6,8 @@ from rest_framework import permissions
 
 from topics.models import Topic
 from topics.serializers import TopicSerializer
-from communities.models import Community
-from communities.serializers import CommunitySerializer
+from community.models import Community
+from community.serializers import CommunitySerializer
 
 
 class TopicList(generics.ListCreateAPIView):
