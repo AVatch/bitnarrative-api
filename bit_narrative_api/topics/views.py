@@ -1,3 +1,5 @@
+from django.shortcuts import get_object_or_404
+
 from rest_framework import generics
 from rest_framework import authentication
 from rest_framework import permissions
@@ -45,4 +47,5 @@ class TopicCommunities(generics.ListAPIView):
     permission_classes = (permissions.IsAuthenticated, )
 
     def get_queryset(self):
-        return Topic.community.all().order_by('-updated_at')
+        topic = get_object_or_404(Topic, pk=self.kwargs['pk'])
+        return topic.community.all().order_by('-updated_at')
