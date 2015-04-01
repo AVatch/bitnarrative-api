@@ -1,4 +1,4 @@
-ufrom django.db import models
+from django.db import models
 
 from accounts.models import Account
 from content.models import Content
