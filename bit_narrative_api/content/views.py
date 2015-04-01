@@ -83,9 +83,6 @@ class ContentParse(APIView):
     permission_classes = (permissions.IsAuthenticated,)
 
     def post(self, request, format=None):
-
-        print "POSTING YO"
-
         serializer = ContentParserSerializer(data=request.data)
         if serializer.is_valid():
             # check to see if content exists, otherwise create it
