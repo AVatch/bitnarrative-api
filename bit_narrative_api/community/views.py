@@ -46,7 +46,8 @@ class CommunityContent(generics.ListAPIView):
     """
     URL: /api/v1/community/<pk>/content/
     Methods: GET
-    Returns: List of content associated with the community ordered by most viewed
+    Returns: List of content associated with the community ordered
+    by most viewed
     """
     serializer_class = ContentSerializer
     authentication_classes = (authentication.SessionAuthentication,
@@ -55,7 +56,8 @@ class CommunityContent(generics.ListAPIView):
 
     def get_queryset(self):
         community = get_object_or_404(Community, pk=self.kwargs['pk'])
-        return Content.objects.filter(community=community).order_by('-view_count')
+        return Content.objects.filter(
+            community=community).order_by('-view_count')
 
 
 class CommunityBits(generics.ListAPIView):
@@ -87,11 +89,15 @@ class CommunityTopBits(generics.ListAPIView):
 
     def get_queryset(self):
         community = get_object_or_404(Community, pk=self.kwargs['pk'])
-        return Bit.objects.filter(community=community).order_by('-view_count')[:3]
+        return Bit.objects.filter(
+            community=community).order_by('-view_count')[:3]
 
 
 class CommunityJoin(APIView):
     """
+    URL: /api/v1/community/<pk>/join/
+    Method: GET
+    Returns: Join a community
     """
     authentication_classes = (authentication.SessionAuthentication,
                               authentication.TokenAuthentication)
@@ -101,7 +107,7 @@ class CommunityJoin(APIView):
         user = request.user
         community = Community.objects.get(pk=pk)
         community.accounts.add(user)
-        response = {"hi": "hi"}
+        response = {}
 
         return Response(response, status=status.HTTP_200_OK)
 

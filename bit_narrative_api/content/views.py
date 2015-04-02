@@ -14,7 +14,7 @@ from bits.models import Bit
 from bits.serializers import BitSerializer
 
 
-class ContentList(generics.ListAPIView):
+class ContentList(generics.ListCreateAPIView):
     """
     URL: /api/v1/content/
     Methods: GET
@@ -69,7 +69,7 @@ class ContentTopBits(generics.ListAPIView):
 
     def get_queryset(self):
         content = get_object_or_404(Content, pk=self.kwargs['pk'])
-        return Bit.objects.filter(content=content).order_by('-view_count')[:3]
+        return Bit.objects.filter(content=content).order_by('-view_count')[:5]
 
 
 class ContentParse(APIView):

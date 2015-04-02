@@ -1,44 +1,34 @@
 from rest_framework import serializers
 
-from accounts.models import Account
+from .models import Account
 
 
-class AccountSerializer(serializers.HyperlinkedModelSerializer):
-    password = serializers.CharField(write_only=True,
-                                     allow_blank=True,
-                                     required=False)
-    confirm_password = serializers.CharField(write_only=True,
-                                             allow_blank=True,
-                                             required=False)
-
+class AccountSerializer(serializers.ModelSerializer):
     class Meta:
         model = Account
-        fields = ('id', 'username', 'email',
-                  'first_name', 'last_name', 'profile_picture_url',
-                  'password', 'confirm_password',
-                  'is_manager', 'created_at', 'updated_at')
-        read_only_fields = ('id', 'created_at', 'updated_at')
+        extra_kwargs = {'password': {'write_only': True}}
+        read_only_fields = ('last_login', 'is_admin', 'is_manager')
 
     def create(self, validated_data):
-        return Account.objects.create(**validated_data)
+        account = Account(
+            username=validated_data['username'],
+            email=validated_data['email'],
+            first_name=validated_data['first_name'],
+            last_name=validated_data['last_name'],
+        )
+        account.set_password(validated_data['password'])
+        account.save()
+        return account
 
     def update(self, instance, validated_data):
-        instance.username = validated_data.get(
-                              'username', instance.username)
-        instance.first_name = validated_data.get(
-                              'first_name', instance.first_name)
-        instance.last_name = validated_data.get(
-                              'last_name', instance.last_name)
-        instance.profile_picture_url = validated_data.get(
-                          'profile_picture_url', instance.profile_picture_url)
+        instance.email = validated_data.get('email', instance.email)
+        instance.first_name = validated_data.get('first_name',
+                                                 instance.first_name)
+        instance.last_name = validated_data.get('last_name',
+                                                instance.last_name)
+
+        instance.set_password(validated_data['password'])
 
         instance.save()
-
-        password = validated_data.get('password', None)
-        confirm_password = validated_data.get('confirm_password', None)
-
-        if password and confirm_password and password == confirm_password:
-            instance.set_password(password)
-            instance.save()
 
         return instance

@@ -3,16 +3,15 @@ from community.models import Community
 
 
 class Content(models.Model):
-    domain = models.CharField(max_length=240, blank=True)
     url = models.URLField(unique=True)
+    domain = models.CharField(max_length=240, blank=True)
 
     title = models.CharField(max_length=240, blank=True)
     excerpt = models.TextField(blank=True)
     content = models.TextField(blank=True)
+    lead_image_url = models.URLField(blank=True, null=True)
 
     community = models.ManyToManyField(Community, related_name='content')
-
-    lead_image_url = models.URLField(blank=True, null=True)
 
     date_published = models.DateTimeField(blank=True, null=True)
     word_count = models.IntegerField(blank=True, null=True)

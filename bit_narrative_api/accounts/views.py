@@ -1,13 +1,13 @@
 from django.shortcuts import get_object_or_404
 
-from rest_framework import generics, status
+from rest_framework import generics
 from rest_framework import authentication
 from rest_framework import permissions
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
-from accounts.models import Account
-from accounts.serializers import AccountSerializer
+from .models import Account
+from .serializers import AccountSerializer
 from bits.models import Bit
 from bits.serializers import BitSerializer
 from community.models import Community
@@ -35,17 +35,6 @@ class AccountCreate(generics.CreateAPIView):
     """
     queryset = Account.objects.all()
     serializer_class = AccountSerializer
-
-    def create(self, request, format=None):
-        serializer = self.serializer_class(data=request.data)
-        if serializer.is_valid():
-            Account.objects.create_user(**serializer.validated_data)
-            return Response(serializer.validated_data,
-                            status=status.HTTP_201_CREATED)
-        return Response({
-            'status': 'Bad Request',
-            'message': 'Account could not be created with received data.'
-          }, status=status.HTTP_400_BAD_REQUEST)
 
 
 class AccountDetail(generics.RetrieveUpdateDestroyAPIView):
