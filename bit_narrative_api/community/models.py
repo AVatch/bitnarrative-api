@@ -10,7 +10,7 @@ class Community(models.Model):
     lead_image_url = models.URLField(blank=True, null=True)
 
     accounts = models.ManyToManyField(Account, related_name='community')
-    topics = models.ForeignKey(Topic, related_name='community')
+    topics = models.ManyToManyField(Topic, related_name='community')
 
     participation_rate = models.FloatField(blank=True, null=True)
 

@@ -15,6 +15,10 @@ urlpatterns = format_suffix_patterns([
         views.CommunityDetail.as_view(),
         name='community-detail'),
 
+    url(r'^api/v1/community/(?P<pk>[0-9]+)/content/$',
+        views.CommunityContent.as_view(),
+        name='community-content'),
+
     url(r'^api/v1/community/(?P<pk>[0-9]+)/bits/$',
         views.CommunityBits.as_view(),
         name='community-bits'),

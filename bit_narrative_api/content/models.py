@@ -17,6 +17,7 @@ class Content(models.Model):
     word_count = models.IntegerField(blank=True, null=True)
     view_count = models.IntegerField(blank=True, null=True)
     share_count = models.IntegerField(blank=True, null=True)
+
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
