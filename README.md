@@ -56,8 +56,12 @@ Authorization: Token <token>
 /api/v1/account/<pk>/communities/
 /api/v1/me/
 
+/api/v1/topics/
+/api/v1/topics/<pk>/
+/api/v1/topics/<pk>/communities/
+
 /api/v1/content/
-/api/v1/content/<pk>)/
+/api/v1/content/<pk>/
 /api/v1/content/<pk>/bits/
 /api/v1/content/<pk>/topbits/
 
@@ -208,6 +212,80 @@ Returns the currently authenticated user account's object
 }
 ```
 ---
+#### Topics
+#####Request: GET @auth-required
+```http
+/api/v1/topics/
+```
+#####Response
+Paginated result of all topics
+```json
+{
+    "count": 2, 
+    "next": null, 
+    "previous": null, 
+    "results": [
+        {
+            "id": 1, 
+            "topic": "News", 
+            "lead_image_url": "", 
+            "created_at": "2015-04-04T04:04:37.638011Z", 
+            "updated_at": "2015-04-04T04:04:37.638047Z", 
+            "accounts": []
+        }, 
+    ]
+}
+```
+---
+#####Request: GET PUT DELETE @auth-required
+```http
+/api/v1/topic/<pk>/
+```
+#####Response
+Get topic based off of its ```pk```
+```json
+{
+    "id": 1, 
+    "topic": "News", 
+    "lead_image_url": "", 
+    "created_at": "2015-04-04T04:04:37.638011Z", 
+    "updated_at": "2015-04-04T04:04:37.638047Z", 
+    "accounts": []
+}
+```
+---
+#####Request: GET @auth-required
+```http
+/api/v1/topic/<pk>/communities/
+```
+#####Response
+Paginated result of all topic communities
+```json
+{
+    "count": 2, 
+    "next": null, 
+    "previous": null, 
+    "results": [
+        {
+            "id": 1, 
+            "community": "Yoloswag", 
+            "community_description": "Where big pimps chill", 
+            "lead_image_url": "", 
+            "participation_rate": null, 
+            "created_at": "2015-04-04T04:30:55.535874Z", 
+            "updated_at": "2015-04-07T18:23:47.544967Z", 
+            "accounts": [
+                1
+            ], 
+            "topics": [
+                1
+            ]
+        }, 
+    ]
+}
+```
+---
+
 #### Content
 #####Request: GET @auth-required
 ```http
