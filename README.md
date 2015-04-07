@@ -70,7 +70,7 @@ Authorization: Token <token>
 /api/v1/bit/<pk>/accounts/
 ```
 ---
-#### Accounts
+### Accounts
 #####Request: GET @auth-required
 ```http
 /api/v1/accounts/
@@ -212,7 +212,7 @@ Returns the currently authenticated user account's object
 }
 ```
 ---
-#### Topics
+### Topics
 #####Request: GET @auth-required
 ```http
 /api/v1/topics/
@@ -286,7 +286,7 @@ Paginated result of all topic communities
 ```
 ---
 
-#### Content
+### Content
 #####Request: GET @auth-required
 ```http
 /api/v1/accounts/
@@ -321,4 +321,4 @@ following pages.
 }
 ```
 ---
-#### Bits
+### Bits
