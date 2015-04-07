@@ -47,7 +47,7 @@ Authorization: Token <token>
 ```http
 /api/v1/
 
-/api/v1/api-token-auth/
+[/api/v1/api-token-auth/](https://github.com/AVatch/bitnarrative-api/blob/master/README.md#authentication-flow)
 
 /api/v1/accounts/
 /api/v1/accounts/create/
