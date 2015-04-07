@@ -44,7 +44,7 @@ Authorization: Token <token>
 ```
 
 ### Endpoints
-
+>
 /api/v1/
 
 [/api/v1/api-token-auth/](https://github.com/AVatch/bitnarrative-api/blob/master/README.md#authentication-flow)
@@ -64,7 +64,7 @@ Authorization: Token <token>
 [/api/v1/bits/]()
 [/api/v1/bit/<pk>/]()
 [/api/v1/bit/<pk>/accounts/]()
-
+>
 
 #### Accounts
 #####Request: GET @auth-required
