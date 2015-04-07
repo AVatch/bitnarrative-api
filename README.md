@@ -44,27 +44,27 @@ Authorization: Token <token>
 ```
 
 ### Endpoints
-```
+
 /api/v1/
 
 [/api/v1/api-token-auth/](https://github.com/AVatch/bitnarrative-api/blob/master/README.md#authentication-flow)
 
-/api/v1/accounts/
-/api/v1/accounts/create/
-/api/v1/account/<pk>/
-/api/v1/account/<pk>/bits/
-/api/v1/account/<pk>/communities/
-/api/v1/me/
+[/api/v1/accounts/](https://github.com/AVatch/bitnarrative-api/blob/master/README.md#request-get-auth-required)
+[/api/v1/accounts/create/](https://github.com/AVatch/bitnarrative-api/blob/master/README.md#request-post-1)
+[/api/v1/account/<pk>/](https://github.com/AVatch/bitnarrative-api/blob/master/README.md#request-get-put-delete-auth-required)
+[/api/v1/account/<pk>/bits/](https://github.com/AVatch/bitnarrative-api/blob/master/README.md#request-get-auth-required-1)
+[/api/v1/account/<pk>/communities/](https://github.com/AVatch/bitnarrative-api/blob/master/README.md#request-get-auth-required-2)
+[/api/v1/me/](https://github.com/AVatch/bitnarrative-api/blob/master/README.md#request-get-auth-required-3)
 
-/api/v1/content/
-/api/v1/content/<pk>)/
-/api/v1/content/<pk>/bits/
-/api/v1/content/<pk>/topbits/
+[/api/v1/content/]()
+[/api/v1/content/<pk>)/]()
+[/api/v1/content/<pk>/bits/]()
+[/api/v1/content/<pk>/topbits/]()
 
-/api/v1/bits/
-/api/v1/bit/<pk>/
-/api/v1/bit/<pk>/accounts/
-```
+[/api/v1/bits/]()
+[/api/v1/bit/<pk>/]()
+[/api/v1/bit/<pk>/accounts/]()
+
 
 #### Accounts
 #####Request: GET @auth-required
