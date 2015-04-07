@@ -102,6 +102,7 @@ following pages.
 /api/v1/accounts/create/
 ```
 Required fields: ```username```, ```password```
+
 ---
 #####Request: GET, PUT, DELETE @auth-required
 ```http
