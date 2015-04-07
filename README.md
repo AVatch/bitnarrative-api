@@ -160,9 +160,9 @@ Returns a paginated list of bits the authenticated user has interacted with, sor
 
 #####Request: GET @auth-required
 ```http
-/api/v1/account/<pk>/bits/
+/api/v1/account/<pk>/communities/
 ```
-Returns a paginated list of bits the authenticated user has interacted with, sorted by most recent
+Returns a paginated list of communities the authenticated user has interacted with, sorted by most recent
 ```json
 {
     "count": 1, 
