@@ -42,7 +42,7 @@ All subsequent requests need to contain the following header:
 ```
 Authorization: Token <token>
 ```
-
+---
 ### Endpoints
 ```
 /api/v1/
