@@ -65,7 +65,7 @@ Authorization: Token <token>
 /api/v1/bit/<pk>/
 /api/v1/bit/<pk>/accounts/
 ```
-
+---
 #### Accounts
 #####Request: GET @auth-required
 ```http
@@ -96,14 +96,13 @@ following pages.
     ]
 }
 ```
-
+---
 #####Request: POST
 ```http
 /api/v1/accounts/create/
 ```
 Required fields: ```username```, ```password```
-
-
+---
 #####Request: GET, PUT, DELETE @auth-required
 ```http
 /api/v1/account/<pk>/
@@ -124,8 +123,7 @@ Returns (```GET```) an account object and allows update (```PUT```) and deletion
     "updated_at": "2015-04-07T18:20:20.098732Z"
 }
 ```
-
-
+---
 #####Request: GET @auth-required
 ```http
 /api/v1/account/<pk>/bits/
@@ -156,8 +154,7 @@ Returns a paginated list of bits the authenticated user has interacted with, sor
     ]
 }
 ```
-
-
+---
 #####Request: GET @auth-required
 ```http
 /api/v1/account/<pk>/communities/
@@ -187,7 +184,7 @@ Returns a paginated list of communities the authenticated user has interacted wi
     ]
 }
 ```
-
+---
 #####Request: GET @auth-required
 ```http
 /api/v1/me/
@@ -209,7 +206,7 @@ Returns the currently authenticated user account's object
     "updated_at": "2015-04-07T18:20:20.098732Z"
 }
 ```
-
+---
 #### Content
 
 #### Bits
