@@ -46,9 +46,9 @@ Authorization: Token <token>
 ### Endpoints
 ```http
 /api/v1/
-
+```
 [/api/v1/api-token-auth/](https://github.com/AVatch/bitnarrative-api/blob/master/README.md#authentication-flow)
-
+```
 /api/v1/accounts/
 /api/v1/accounts/create/
 /api/v1/account/<pk>/
