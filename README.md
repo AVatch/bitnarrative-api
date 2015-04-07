@@ -60,6 +60,14 @@ Authorization: Token <token>
 /api/v1/topics/<pk>/
 /api/v1/topics/<pk>/communities/
 
+/api/v1/communities/
+/api/v1/community/<pk>/
+/api/v1/community/<pk>/content/
+/api/v1/community/<pk>/bits/
+/api/v1/community/<pk>/topbits/
+/api/v1/community/<pk>/join/
+/api/v1/community/<pk>/accounts/
+
 /api/v1/content/
 /api/v1/content/<pk>/
 /api/v1/content/<pk>/bits/
