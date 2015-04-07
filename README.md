@@ -76,21 +76,23 @@ Paginated result of all accounts. ```next``` and ```previous``` contain ```urls`
 following pages.
 ```json
 {
-    "count": 4, 
+    "count": 1, 
     "next": null, 
     "previous": null, 
     "results": [
         {
             "id": 1, 
+            "last_login": "2015-04-04T04:04:02.226792Z", 
             "username": "avatchinsky", 
-            "email": "", 
-            "first_name": "", 
-            "last_name": "", 
-            "profile_picture_url": null, 
+            "email": "adrian@adrian.com", 
+            "first_name": "Adrian", 
+            "last_name": "Vatchinsky", 
+            "profile_picture_url": "http://placehold.it/150x150", 
+            "is_admin": true, 
             "is_manager": false, 
-            "created_at": "2015-02-25T17:57:07.446229Z", 
-            "updated_at": "2015-02-25T17:57:07.450180Z"
-        } 
+            "created_at": "2015-04-04T04:03:50.932471Z", 
+            "updated_at": "2015-04-07T18:20:20.098732Z"
+        }
     ]
 }
 ```
