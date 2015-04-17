@@ -6,8 +6,8 @@ from .models import Account
 class AccountSerializer(serializers.ModelSerializer):
     class Meta:
         model = Account
-        extra_kwargs = {'password': {'write_only': True}}
-        read_only_fields = ('last_login', 'is_admin', 'is_manager')
+        extra_kwargs = {'password': {'write_only': True, 'allow_blank': True}}
+        read_only_fields = ('last_login',)
 
     def create(self, validated_data):
         account = Account(
@@ -27,7 +27,10 @@ class AccountSerializer(serializers.ModelSerializer):
         instance.last_name = validated_data.get('last_name',
                                                 instance.last_name)
 
-        instance.set_password(validated_data['password'])
+        if validated_data['password'] == '':
+            pass
+        else:
+            instance.set_password(validated_data['password'])
 
         instance.save()
 

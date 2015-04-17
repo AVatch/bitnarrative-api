@@ -116,3 +116,5 @@ CORS_ORIGIN_WHITELIST = (
     'localhost:8100',
     'localhost:8000',
 )
+
+CORS_ORIGIN_ALLOW_ALL = True
