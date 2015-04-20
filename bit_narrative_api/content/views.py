@@ -10,6 +10,7 @@ from rest_framework.response import Response
 from content.models import Content
 from content.serializers import ContentSerializer, ContentParserSerializer
 from content.parsers import parse_content, strip_tags, parse_bits
+from community.models import Community
 from bits.models import Bit
 from bits.serializers import BitSerializer
 
@@ -101,6 +102,11 @@ class ContentParse(APIView):
                                                  word_count=parsed['word_count'],
                                                  view_count=1,
                                                  share_count=0, )
+
+
+
+                content.community.add(Community.objects.get(pk=serializer.data['community']))
+
                 # break it down to bits
                 content.content = strip_tags(content.content)
                 bits_parsed = parse_bits(content.content)
