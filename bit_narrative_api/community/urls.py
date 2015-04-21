@@ -31,6 +31,10 @@ urlpatterns = format_suffix_patterns([
         views.CommunityJoin.as_view(),
         name='community-join'),
 
+    url(r'^api/v1/community/(?P<pk>[0-9]+)/leave/$',
+        views.CommunityLeave.as_view(),
+        name='community-leave'),
+
     url(r'^api/v1/community/(?P<pk>[0-9]+)/accounts/$',
         views.CommunityAccounts.as_view(),
         name='community-accounts'),

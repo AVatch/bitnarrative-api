@@ -112,6 +112,25 @@ class CommunityJoin(APIView):
         return Response(response, status=status.HTTP_200_OK)
 
 
+class CommunityLeave(APIView):
+    """
+    URL: /api/v1/community/<pk>/join/
+    Method: GET
+    Returns: Join a community
+    """
+    authentication_classes = (authentication.SessionAuthentication,
+                              authentication.TokenAuthentication)
+    permission_classes = (permissions.IsAuthenticated, )
+
+    def get(self, request, pk, format=None):
+        user = request.user
+        community = Community.objects.get(pk=pk)
+        community.accounts.remove(user)
+        response = {}
+
+        return Response(response, status=status.HTTP_200_OK)
+
+
 class CommunityAccounts(generics.ListAPIView):
     """
     URL: /api/v1/community/<pk>/accounts/
