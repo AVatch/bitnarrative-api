@@ -9,7 +9,8 @@ class Content(models.Model):
     title = models.CharField(max_length=240, blank=True)
     excerpt = models.TextField(blank=True)
     content = models.TextField(blank=True)
-    lead_image_url = models.URLField(blank=True, null=True)
+    lead_image_url = models.URLField(blank=True, null=True,
+                                     default="http://placehold.it/350x150")
 
     community = models.ManyToManyField(Community, related_name='content')
 
