@@ -4,6 +4,8 @@ from .models import Account
 
 
 class AccountSerializer(serializers.ModelSerializer):
+    community = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
+
     class Meta:
         model = Account
         extra_kwargs = {'password': {'write_only': True, 'allow_blank': True}}
