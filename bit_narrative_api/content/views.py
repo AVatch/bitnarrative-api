@@ -51,6 +51,7 @@ class ContentBits(generics.ListAPIView):
     authentication_classes = (authentication.SessionAuthentication,
                               authentication.TokenAuthentication)
     permission_classes = (permissions.IsAuthenticated, )
+    paginate_by = 1000
 
     def get_queryset(self):
         content = get_object_or_404(Content, pk=self.kwargs['pk'])
