@@ -57,7 +57,7 @@ class CommunityContent(generics.ListAPIView):
     def get_queryset(self):
         community = get_object_or_404(Community, pk=self.kwargs['pk'])
         return Content.objects.filter(
-            community=community).order_by('-view_count')
+            community=community).order_by('-created_at')
 
 
 class CommunityBits(generics.ListAPIView):
