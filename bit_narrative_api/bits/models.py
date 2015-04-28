@@ -6,7 +6,7 @@ from community.models import Community
 
 
 class Bit(models.Model):
-    bit = models.CharField(max_length=240)
+    bit = models.CharField(max_length=500)
     content_index = models.IntegerField()
 
     content = models.ForeignKey(Content, related_name='bits')
