@@ -55,7 +55,7 @@ class ContentBits(generics.ListAPIView):
 
     def get_queryset(self):
         content = get_object_or_404(Content, pk=self.kwargs['pk'])
-        return Bit.objects.filter(content=content).order_by('-view_count')
+        return Bit.objects.filter(content=content).order_by('content_index')
 
 
 class ContentTopBits(generics.ListAPIView):
